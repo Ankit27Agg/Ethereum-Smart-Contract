@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <p></p>
+    <button>Deposit Cash</button>
+    <button>Withdraw Cash</button>
+
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js" integrity="sha256-nWBTbvxhJgjslRyuAKJHK+XcZPlCnmIAAMixz6EefVk=" crossorigin="anonymous"></script>
+    <script src="jquery-3.5.1.min.js"></script>
+
+    <script>
+        var smartContract;
+        $(document).ready(function(){
+            //initialize the object of web3
+            web3_object = new Web3(web3.currentProvider);
+
+
+            var address = '0x5B38Da6a701c568545dCfcB03FcB875f56beddC4';
+            var abi = [
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "amount",
+				"type": "int256"
+			}
+		],
+		"name": "depositCash",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "amount",
+				"type": "int256"
+			}
+		],
+		"name": "withdrawCash",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "showBalance",
+		"outputs": [
+			{
+				"name": "",
+				"type": "int256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	}
+];
+            
+            //object for contract
+            smartContract = new web3_object.eth.Contract();
+        });
+    </script>
+</body>
+</html>
